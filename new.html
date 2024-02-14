@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudarshan's Technical Task </title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="p-5 bg-gradient-to-r from-violet-200 to-pink-200 ">
+    <section class="border-2 border-black p-2 bg-white">
+        <h1 class="text-center">JAVA SCRIPT</h1>
+        <h1 class="font-bold mb-2">1)Write a function that takes an array of string as  input and splits it into two arrays, one
+            containing <br> duplicate values and other containing unique values.</h1>
+    <div class="  grid grid-cols-2 "">
+  <p class="grid-cols-2 grid-rows-1">
+   
+    let input=["my","name","is","my","location","is"]br<br>
+    let unique=[]<br>
+    let duplicate=[]<br>
+    let duplicate2=[]<br>
+    let seen=[]<br>
+    
+    for(let arr of input){<br>
+    if(!seen[arr]){<br>
+      unique.push(arr)<br>
+      seen[arr] = 1;<br>
+    }else{ <br> <br>
+      duplicate2.push(arr)<br>
+      duplicate2.push(arr)<br>
+    }<br>
+    }<br>
+    
+    for(let i=0;i<unique.length;i++){ <br>   
+      const index=duplicate.findIndex(data=>data==unique[i])<br>    
+        if(index!= -1){<br>
+      unique.splice(index,1)<br>
+        }  <br>
+    }<br>
+    console.log(unique);<br>
+    console.log(duplicate2);
+  </p>
+  <div class="grid-cols-2 mt-52">
+      <img src="./image/Screenshot 2024-02-14 114544.png" alt="" srcset="">
+  </div>
+</div>
+</section>
+<section class="border-2 border-black p-2 bg-white mt-2">
+    <h1 class="font-bold mn-1">2)Write a funtion that takes array of string as input and converts it into an array of object.
+        String is separated <br> by space between them.</h1>
+<div class="  grid grid-cols-2 "">
+<p class="grid-cols-2 grid-rows-1">
+
+    let stringArray = [<br>
+    "DB20400045620 1323474 9887554555",<br>
+    "DB20450398520 3243434 6877887887",<br>
+    "DB20406598420 2332323 5878764564",<br>
+    "DB20650398320 4656566 5645645666",<br>
+  ];<br>
+  function convertArray(inputArray) {<br>
+    let outputArray = [];<br>
+  
+    inputArray.forEach(str => {<br>
+        let [uniqueId, empNumber, phoneNumber] = str.split(' ');<br>
+        outputArray.push({<br>
+            "uniqueId": uniqueId,<br>
+            "empNumber": empNumber,<br>
+            "phoneNumber": phoneNumber<br>
+        });<br>
+    });<br>  
+    return outputArray;<br>
+  }<br>    
+  let outputArrayOfObject = convertArray(stringArray);<br>
+  console.log(outputArrayOfObject);<br>
+</p>
+<div class="grid-cols-2">
+  <img src="./image/Screenshot 2024-02-14 115020.png" alt="" srcset="">
+</div>
+</div>
+</section>
+<section class="border-2 border-black p-2 bg-white mt-2">
+    <h1 class="font-bold mn-1">3)write a function to calculate day and time difference between two time string.</h1>
+<div class="  grid grid-cols-2 "">
+<p class="grid-cols-2 grid-rows-1">
+
+    let firstDateTime = "12/01/2022 14:00:00";<br>
+    let secondDateTime = "12/01/2021 08:00:00";<br>
+    function calculateTimeDifference(firstDateTime, secondDateTime) {<br>
+      let firstDate = new Date(firstDateTime);<br>
+      let secondDate = new Date(secondDateTime);<br>
+      let difference = Math.abs(firstDate - secondDate);<br>
+      let days = Math.floor(difference / (1000 * 60 * 60 * 24));<br>
+      difference -= days * (1000 * 60 * 60 * 24);<br>
+      let hours = Math.floor(difference / (1000 * 60 * 60));<br>
+      difference -= hours * (1000 * 60 * 60);<br>
+      let minutes = Math.floor(difference / (1000 * 60));<br>
+      difference -= minutes * (1000 * 60);<br>
+      let seconds = Math.floor(difference / 1000);<br>
+      return `${days} days | ${hours} hours | ${minutes} minutes | ${seconds} seconds`;<br>
+    }<br>
+    let differenceDateTime = calculateTimeDifference(firstDateTime, secondDateTime);<br>
+    console.log(differenceDateTime);<br>
+</p>
+<div class="grid-cols-2  mt-40">
+  <img src="./image/Screenshot 2024-02-14 121212.png" alt="" srcset="">
+</div>
+</div>
+</section>
+    <section class="border-2 border-black p-2 bg-white mt-2">
+        <h1 class="font-bold mn-1">4)write a function to convert nested object into flattened object.</h1>
+    <div class="  grid grid-cols-2 "">
+  <p class="grid-cols-2 grid-rows-1">
+   
+    function flattenObject(obj, parentKey) { <br>
+        let flattened = {};<br>
+      
+        for (let key in obj) {<br>
+            if (typeof obj[key] === 'object' && obj[key] !== null) {<br>
+                let nestedKeys = flattenObject(obj[key], `${parentKey}${key}.`);<br>
+                flattened = { ...flattened, ...nestedKeys };<br>
+            } else {<br>
+                flattened[`${parentKey}${key}`] = obj[key];<br>
+            }<br>
+        }<br>
+      
+        return flattened;<br>
+      }<br>
+      
+      let nestedObject = {<br>
+        academics:{<br>
+        qualification:"Btech",<br>
+        zone:"East"<br>
+        },<br>
+        address:{<br>
+        state:"KA",<br>
+        pincode:"121211"<br>
+        }<br>
+        }<br>
+      
+      let flattenedObject = flattenObject(nestedObject,'');<br>
+      console.log(flattenedObject);<br>
+  </p>
+  <div class="grid-cols-2 mt-52">
+      <img src="./image/flaten.png" alt="" srcset="">
+  </div>
+</div>
+</section>
+
+<section class="border-2 border-black p-2 bg-white mt-2">
+    <h1 class="font-bold mn-1">5) write a function to sort an array of numbers in ascending and descending order</h1>
+<div class="  grid grid-cols-2 "">
+<p class="grid-cols-2 grid-rows-1">const number=[2,4,6,5,1,3]
+   
+    let ascending=number.sort((a, b) => a - b);<br>
+    console.log('Ascending:' +ascending);<br>
+    let descending=number.sort((a, b) => b - a);<br>
+    console.log('Descending:' +descending);<br>
+</p>
+<div class="grid-cols-2  mt-12">
+  <img src="./image/Screenshot 2024-02-14 123355.png" alt="" srcset="">
+</div>
+</div>
+</section>
+<section class="border-2 border-black p-2 bg-white mt-5">
+    <h1 class="text-center">PYTHON</h1>
+    <h1 class="font-bold mb-2">1) Write a program to remove all numbers and replaces all special characters with a
+        space <br> from a string</h1>
+<div class="  grid grid-cols-2 "">
+<p class="grid-cols-2 grid-rows-1">
+    import re<br>
+    def remove_numbers_and_special_chars(input_string):<br>
+        without_numbers = re.sub(r'\d+', '', input_string)<br>
+        without_special_chars = re.sub(r'[^a-zA-Z\s]', ' ', without_numbers)<br>
+        return without_special_chars<br>
+    input_string = "Hello! How are you? I'm 25 years old."<br>
+    output_string = remove_numbers_and_special_chars(input_string)<br>
+    print("Input String:", input_string)<br>
+    print("Output String:", output_string)<br>
+</p>
+<div class="grid-cols-2 mt-5">
+  <img src="./image/Screenshot 2024-02-14 123942.png" alt="" srcset="">
+</div>
+</div>
+</section>
+<section class="border-2 border-black p-2 bg-white mt-5">
+    <h1 class="font-bold mb-2">2) Write a program to convert all odd length string as, first half of the string to<br>
+        lowercase and second half  of string to uppercase</h1>
+<div class="  grid grid-cols-2 "">
+<p class="grid-cols-2 grid-rows-1">
+    def transform_string(input_string): <br>
+    if len(input_string) % 2 != 0:  <br>
+        mid_index = len(input_string) // 2 <br>
+        first_half = input_string[:mid_index].lower() <br>
+        second_half = input_string[mid_index:].upper() <br>
+        transformed_string = first_half + second_half <br>
+        return transformed_string <br>
+    else: <br>
+        return input_string <br>
+strings = ["oriJenBeliret", "orionmeo"] <br>
+for string in strings: <br> 
+    transformed_string = transform_string(string) <br>
+    print(f"Original string: {string} - Transformed string: {transformed_string}") <br>
+</p>
+<div class="grid-cols-2 mt-14 mr-5">
+  <img src="./image/Screenshot 2024-02-14 124538.png" alt="" srcset="">
+</div>
+</div>
+</section>
+<section class="border-2 border-black p-2 bg-white mt-5">
+    <h1 class="font-bold mb-2">3) Write a program to find second and fourth greatest number in an list of numbers (if
+        length of <br> list is less than 4, should give error message in response)</h1>
+<div class="  grid grid-cols-2 "">
+<p class="grid-cols-2 grid-rows-1">
+    def find_second_and_fourth_greatest(numbers): <br>
+    if len(numbers) < 4: <br>
+        return "Error: List length should be at least 4."     <br>
+    sorted_numbers = sorted(numbers, reverse=True) <br>
+    second_greatest = sorted_numbers[1] <br>
+    fourth_greatest = sorted_numbers[3]     <br>
+    return second_greatest, fourth_greatest <br>
+numbers_list = [10, 5, 20, 15, 30, 25] <br>
+result = find_second_and_fourth_greatest(numbers_list) <br>
+print("Second greatest and fourth greatest numbers:", result) <br>
+</p>
+<div class="grid-cols-2 mt-14 mr-5">
+  <img src="./image/Screenshot 2024-02-14 124832.png" alt="" srcset="">
+</div>
+</div>
+</section>
+<section class="border-2 border-black p-2 bg-white mt-5">
+    <h1 class="font-bold mb-2">4) Write a html page code with css, which can convert string date in certain format
+        into given format using javascript.</h1>
+<div class="  grid grid-cols-2 flex flex-cols">
+    <a class="text-sky-600 transition duration-300 underline mt-5 m-10" target="_blank" href="https://peaceful-haupia-af0f94.netlify.app/?#">https://peaceful-haupia-af0f94.netlify.app/?#</a>
+
+
+</div>
+</section>
+<section class="border-2 border-black p-2 bg-white mt-5">
+    <h1 class="font-bold mb-2">5) Write a html/css/javascript code to create a frontend page, to show electronic
+        device information.</h1>
+<div class="  grid grid-cols-2 flex flex-cols">
+    <a class="text-sky-600 transition duration-300 underline mt-5 m-10" target="_blank" href="https://sudarshan-cart.netlify.app/">https://sudarshan-cart.netlify.app/</a>
+
+
+</div>
+</section>
+</body>
+</html>
